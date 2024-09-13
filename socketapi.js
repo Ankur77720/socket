@@ -8,12 +8,34 @@ const socketapi = {
 
 io - server - all user
 socket - single user
+emit - send krna
+on - receive krna
 
 */
 
 
+/* 
+
+io.emit - sabhi user ko message send karo
+socket.emit- jisne message senk kiya tha sirf usse message send karo
+socket.broadcast.emit- jisne message send kiya tha uske alawa sabko message send karo
+
+*/
+
+
+
 // Add your socket.io logic here!
 io.on("connection", function (socket) {
+
+
+    socket.on("message", function (message) {
+
+        console.log("Message Received: " + message);
+
+        socket.emit('message', message)
+
+    })
+
 
     socket.on("disconnect", function () {
         console.log("A user disconnected");

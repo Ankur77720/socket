@@ -65,8 +65,19 @@
 
         // Clear the input field
         messageInput.value = "";
+
+        //sending message to server
+
+        socket.emit('message', message)
+
+
       }
     });
+
+
+    socket.on('message', function (message) {
+      appendIncomingMessage(message)
+    })
 
 
     function appendIncomingMessage(message) {
